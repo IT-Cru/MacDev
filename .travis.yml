@@ -1,4 +1,12 @@
 os: osx
 
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew
+
+before_cache:
+  - brew cleanup
+
 script:
+  - bash macdev.sh
   - bash macdev.sh
