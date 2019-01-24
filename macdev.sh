@@ -13,6 +13,7 @@ appiTerm="/Applications/iTerm.app"
 appPhpStorm="/Applications/PhpStorm.app"
 appSpotify="/Applications/Spotify.app"
 
+function checkRequirements() {
 
 # Install XCode CommandLineTools.
 if [ ! -d "${dirCommandLineTools}" ]
@@ -20,7 +21,6 @@ then
     echo -e "Install CommandLineTools\n"
     xcode-select --install
 fi
-
 
 # Install or update Homebrew.
 if [ ! -f "${binHomebrew}" ]
@@ -37,44 +37,33 @@ else
     echo -e "ERROR: Homebrew can't be installed or updated"
     exit 1
 fi
+}
 
-
-# Install iTerm and other shells.
-if [ ! -d "${appiTerm}" ]
+function checkApp() {
+if [ ! -d "$1" ]
 then
-    echo -e "Install iTerm\n"
-    brew cask install iterm2
+    echo -e "Install $2\n"
+    ${binHomebrew} cask install $3
+elif [ -d "$1" ]
+then
+    echo -e "$2: already installed"
 fi
+}
 
+checkRequirements
+
+# Install terminal related stuff.
+checkApp "${appiTerm}" "iTerm" "iterm2"
 
 # Install browsers.
-if [ ! -d "${appFirefox}" ]
-then
-    echo -e "Install firefox browser\n"
-    brew cask install firefox
-fi
-if [ ! -d "${appGoogleChrome}" ]
-then
-    echo -e "Install google-chrome browser\n"
-    brew cask install google-chrome
-fi
-
+checkApp "${appFirefox}" "Firefox" "firefox"
+checkApp "${appGoogleChrome}" "Google Chrome" "google-chrome"
 
 # Install IDE.
-if [ ! -d "${appPhpStorm}" ]
-then
-    echo -e "Install PhpStorm\n"
-    brew cask install phpstorm
-fi
-
+checkApp "${appPhpStorm}" "PhpStorm" "phpstorm"
 
 # Install working helpers.
-if [ ! -d "${appSpotify}" ]
-then
-    echo -e "Install Spotify\n"
-    brew cask install spotify
-fi
-
+checkApp "${appSpotify}" "Spotify" "spotify"
 
 # Cleanup Homebrew.
 ${binHomebrew} cleanup
