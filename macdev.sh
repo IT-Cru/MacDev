@@ -14,6 +14,9 @@ appiTerm="/Applications/iTerm.app"
 appPhpStorm="/Applications/PhpStorm.app"
 appSpotify="/Applications/Spotify.app"
 
+# Define tools.
+toolGitFlow="/usr/local/opt/git-flow-avh"
+
 function checkRequirements() {
 
 # Install XCode CommandLineTools.
@@ -51,7 +54,20 @@ then
 fi
 }
 
+function checkTool() {
+    if [ ! -e "$1" ]
+    then
+        echo -e "Install $2\n"
+        ${binHomebrew} install $3
+    elif [ -d "$1" ]
+    then
+        echo -e "$2: already installed"
+    fi
+}
+
 checkRequirements
+
+checkTool "${toolGitFlow}" "GitFlow" "git-flow-avh"
 
 # Install terminal related stuff.
 checkApp "${appiTerm}" "iTerm" "iterm2"
