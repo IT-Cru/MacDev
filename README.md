@@ -1,1 +1,1 @@
-# MacDev
+# MacDev bash script
