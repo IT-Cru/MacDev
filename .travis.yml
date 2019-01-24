@@ -1,3 +1,4 @@
 os: osx
 
-./macdev.sh
+script:
+  - bash macdev.sh
