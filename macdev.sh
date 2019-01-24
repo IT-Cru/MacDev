@@ -7,7 +7,7 @@ dirCommandLineTools="/Library/Developer/CommandLineTools"
 binHomebrew="/usr/local/bin/brew"
 
 # Define apps.
-appDocker="/Applications/Docker.php"
+appDocker="/Applications/Docker.app"
 appFirefox="/Applications/Firefox.app"
 appGoogleChrome="/Applications/Google Chrome.app"
 appiTerm="/Applications/iTerm.app"
