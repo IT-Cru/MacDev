@@ -7,6 +7,7 @@ dirCommandLineTools="/Library/Developer/CommandLineTools"
 binHomebrew="/usr/local/bin/brew"
 
 # Define apps.
+appDocker="/Applications/Docker.php"
 appFirefox="/Applications/Firefox.app"
 appGoogleChrome="/Applications/Google Chrome.app"
 appiTerm="/Applications/iTerm.app"
@@ -58,6 +59,9 @@ checkApp "${appiTerm}" "iTerm" "iterm2"
 # Install browsers.
 checkApp "${appFirefox}" "Firefox" "firefox"
 checkApp "${appGoogleChrome}" "Google Chrome" "google-chrome"
+
+# Install docker.
+checkApp "${appDocker}" "Docker" "docker"
 
 # Install IDE.
 checkApp "${appPhpStorm}" "PhpStorm" "phpstorm"
