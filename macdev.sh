@@ -12,6 +12,7 @@ appFirefox="/Applications/Firefox.app"
 appGoogleChrome="/Applications/Google Chrome.app"
 appiTerm="/Applications/iTerm.app"
 appPhpStorm="/Applications/PhpStorm.app"
+appSlack="/Applications/Slack.app"
 appSpotify="/Applications/Spotify.app"
 
 # Define tools.
@@ -88,6 +89,7 @@ checkApp "${appPhpStorm}" "PhpStorm" "phpstorm"
 
 # Install working helpers.
 checkApp "${appSpotify}" "Spotify" "spotify"
+checkApp "${appSlack}" "Slack" "slack"
 
 # Cleanup Homebrew.
 ${binHomebrew} cleanup
