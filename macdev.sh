@@ -19,6 +19,7 @@ appSpotify="/Applications/Spotify.app"
 toolComposer="/usr/local/opt/composer"
 toolGitFlow="/usr/local/opt/git-flow-avh"
 toolPHP="/usr/local/opt/php"
+toolVim="/usr/local/opt/vim"
 
 function checkRequirements() {
 
@@ -73,6 +74,7 @@ checkRequirements
 checkTool "${toolPHP}" "PHP" "php"
 checkTool "${toolComposer}" "Composer" "composer"
 checkTool "${toolGitFlow}" "GitFlow" "git-flow-avh"
+checkTool "${toolVim}" "Vim" "vim"
 
 # Install terminal related stuff.
 checkApp "${appiTerm}" "iTerm" "iterm2"
