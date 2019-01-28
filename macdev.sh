@@ -99,5 +99,8 @@ checkApp "${appPhpStorm}" "PhpStorm" "phpstorm"
 checkApp "${appSpotify}" "Spotify" "spotify"
 checkApp "${appSlack}" "Slack" "slack"
 
+# Upgrade installed stuff.
+${binHomebrew} upgrade
+
 # Cleanup Homebrew.
 ${binHomebrew} cleanup
