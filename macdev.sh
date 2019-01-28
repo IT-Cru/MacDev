@@ -15,7 +15,9 @@ appPhpStorm="/Applications/PhpStorm.app"
 appSpotify="/Applications/Spotify.app"
 
 # Define tools.
+toolComposer="/usr/local/opt/composer"
 toolGitFlow="/usr/local/opt/git-flow-avh"
+toolPHP="/usr/local/opt/php"
 
 function checkRequirements() {
 
@@ -67,6 +69,8 @@ function checkTool() {
 
 checkRequirements
 
+checkTool "${toolPHP}" "PHP" "php"
+checkTool "${toolComposer}" "Composer" "composer"
 checkTool "${toolGitFlow}" "GitFlow" "git-flow-avh"
 
 # Install terminal related stuff.
