@@ -17,6 +17,7 @@ appSpotify="/Applications/Spotify.app"
 
 # Define tools.
 toolComposer="/usr/local/opt/composer"
+toolDDev="/usr/local/opt/ddev"
 toolGitFlow="/usr/local/opt/git-flow-avh"
 toolPHP="/usr/local/opt/php"
 toolVim="/usr/local/opt/vim"
@@ -37,9 +38,13 @@ then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     echo -e "Add caskroom/cask repository"
     ${binHomebrew} tap caskroom/cask
+    echo -e "Add drud/ddev repository"
+    ${binHomebrew} tap drud/ddev
 elif [ -f "${binHomebrew}" ]
 then
     echo -e "Update Homebrew\n"
+    ${binHomebrew} tap caskroom/cask
+    ${binHomebrew} tap drud/ddev
     ${binHomebrew} update
 else
     echo -e "ERROR: Homebrew can't be installed or updated"
@@ -85,6 +90,7 @@ checkApp "${appGoogleChrome}" "Google Chrome" "google-chrome"
 
 # Install docker.
 checkApp "${appDocker}" "Docker" "docker"
+checkTool "${toolDDev}" "DDev" "ddev"
 
 # Install IDE.
 checkApp "${appPhpStorm}" "PhpStorm" "phpstorm"
