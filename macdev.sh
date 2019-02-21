@@ -21,6 +21,7 @@ toolDDev="/usr/local/opt/ddev"
 toolGitFlow="/usr/local/opt/git-flow-avh"
 toolPHP="/usr/local/opt/php"
 toolVim="/usr/local/opt/vim"
+toolWget="/usr/local/opt/wget"
 
 function checkRequirements() {
 
@@ -80,6 +81,7 @@ checkTool "${toolPHP}" "PHP" "php"
 checkTool "${toolComposer}" "Composer" "composer"
 checkTool "${toolGitFlow}" "GitFlow" "git-flow-avh"
 checkTool "${toolVim}" "Vim" "vim"
+checkTool "${toolWget}" "wget" "wget"
 
 # Install terminal related stuff.
 checkApp "${appiTerm}" "iTerm" "iterm2"
