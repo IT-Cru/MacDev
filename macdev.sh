@@ -38,14 +38,11 @@ if [ ! -f "${binHomebrew}" ]
 then
     echo -e "Install Homebrew\n"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    echo -e "Add caskroom/cask repository"
-    ${binHomebrew} tap caskroom/cask
     echo -e "Add drud/ddev repository"
     ${binHomebrew} tap drud/ddev
 elif [ -f "${binHomebrew}" ]
 then
     echo -e "Update Homebrew\n"
-    ${binHomebrew} tap caskroom/cask
     ${binHomebrew} tap drud/ddev
     ${binHomebrew} update
 else
