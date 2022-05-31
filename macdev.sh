@@ -77,7 +77,10 @@ function checkTool() {
     fi
 }
 
+# Run check requirements for MacDev script.
 checkRequirements
+
+# Install some helper tools.
 checkTool "${toolRename}" "rename" "rename"
 checkTool "${toolVim}" "Vim" "vim"
 checkTool "${toolWget}" "wget" "wget"
