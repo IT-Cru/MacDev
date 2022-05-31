@@ -1,0 +1,33 @@
+name: CI Testing
+
+on:
+  push:
+    paths:
+      - 'macdev.sh'
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  testing:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Cache Homebrew Bundler RubyGems
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-rubygems-
+
+      - name: Test MacDev install
+        run: ./macdev.sh
+
+      - name: Test MacDev update
+        run: ./macdev.sh
