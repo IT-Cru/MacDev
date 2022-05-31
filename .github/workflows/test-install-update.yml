@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  install:
+  testing:
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -23,13 +23,6 @@ jobs:
 
       - name: Test MacDev install
         run: ./macdev.sh
-
-  update:
-    needs: install
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
       - name: Test MacDev update
         run: ./macdev.sh
