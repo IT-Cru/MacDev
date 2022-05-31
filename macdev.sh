@@ -7,30 +7,33 @@ dirCommandLineTools="/Library/Developer/CommandLineTools"
 binHomebrew="/usr/local/bin/brew"
 
 # Define apps.
+app1Password="/Applications/1Password 7.app"
 appDocker="/Applications/Docker.app"
 appFirefox="/Applications/Firefox.app"
 appGoogleChrome="/Applications/Google Chrome.app"
 appiTerm="/Applications/iTerm.app"
+appLens="/Applications/Lens.app"
 appPhpStorm="/Applications/PhpStorm.app"
+appPostman="/Applications/Postman.app"
 appSlack="/Applications/Slack.app"
 appSpotify="/Applications/Spotify.app"
 
 # Define tools.
-toolComposer="/usr/local/opt/composer"
+toolAWSIAM="/usr/local/opt/aws-iam-authenticator"
 toolDDev="/usr/local/opt/ddev"
-toolGitFlow="/usr/local/opt/git-flow-avh"
-toolNpm="/usr/local/opt/npm"
-toolPHP="/usr/local/opt/php"
+toolRename="/usr/local/opt/rename"
 toolVim="/usr/local/opt/vim"
 toolWget="/usr/local/opt/wget"
 
 function checkRequirements() {
 
 # Install XCode CommandLineTools.
-if [ ! -d "${dirCommandLineTools}" ]
+if xcode-select --install 2>&1 | grep installed;
 then
-    echo -e "Install CommandLineTools\n"
-    xcode-select --install
+  echo "XCode CommandLineTools already installed."
+else
+  echo "XCode CommandLineTools not installed yet."
+  echo "Installing XCode CommandLineTools..."
 fi
 
 # Install or update Homebrew.
@@ -55,10 +58,11 @@ function checkApp() {
 if [ ! -d "$1" ]
 then
     echo -e "Install $2\n"
-    ${binHomebrew} cask install $3
+    ${binHomebrew} install --cask $3
 elif [ -d "$1" ]
 then
     echo -e "$2: already installed"
+    ${binHomebrew} upgrade --cask $3
 fi
 }
 
@@ -74,11 +78,7 @@ function checkTool() {
 }
 
 checkRequirements
-
-checkTool "${toolPHP}" "PHP" "php"
-checkTool "${toolComposer}" "Composer" "composer"
-checkTool "${toolGitFlow}" "GitFlow" "git-flow-avh"
-checkTool "${toolNpm}" "npm" "npm"
+checkTool "${toolRename}" "rename" "rename"
 checkTool "${toolVim}" "Vim" "vim"
 checkTool "${toolWget}" "wget" "wget"
 
@@ -90,13 +90,17 @@ checkApp "${appFirefox}" "Firefox" "firefox"
 checkApp "${appGoogleChrome}" "Google Chrome" "google-chrome"
 
 # Install docker.
+checkTool "${toolAWSIAM}" "AWS IAM" "aws-iam-authenticator"
 checkApp "${appDocker}" "Docker" "docker"
 checkTool "${toolDDev}" "DDev" "ddev"
+checkApp "${appLens}" "Lens" "lens"
 
 # Install IDE.
 checkApp "${appPhpStorm}" "PhpStorm" "phpstorm"
 
 # Install working helpers.
+checkApp "${app1Password}" "1Password" "1password"
+checkApp "${appPostman}" "Postman" "postman"
 checkApp "${appSpotify}" "Spotify" "spotify"
 checkApp "${appSlack}" "Slack" "slack"
 
