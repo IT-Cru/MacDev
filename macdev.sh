@@ -16,7 +16,6 @@ appOpenLens="/Applications/OpenLens.app"
 appPhpStorm="/Applications/PhpStorm.app"
 appPostman="/Applications/Postman.app"
 appSlack="/Applications/Slack.app"
-appSpotify="/Applications/Spotify.app"
 
 # Define tools.
 toolAWSIAM="/usr/local/opt/aws-iam-authenticator"
@@ -104,7 +103,6 @@ checkApp "${appPhpStorm}" "PhpStorm" "phpstorm"
 # Install working helpers.
 checkApp "${app1Password}" "1Password" "1password"
 checkApp "${appPostman}" "Postman" "postman"
-checkApp "${appSpotify}" "Spotify" "spotify"
 checkApp "${appSlack}" "Slack" "slack"
 
 # Upgrade installed stuff.
