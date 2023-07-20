@@ -4,7 +4,7 @@
 dirCommandLineTools="/Library/Developer/CommandLineTools"
 
 # Define binaries.
-binHomebrew="/usr/local/bin/brew"
+binHomebrew="/opt/homebrew/bin/brew"
 
 # Define apps.
 app1Password="/Applications/1Password 7.app"
@@ -39,7 +39,7 @@ fi
 if [ ! -f "${binHomebrew}" ]
 then
     echo -e "Install Homebrew\n"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo -e "Add drud/ddev repository"
     ${binHomebrew} tap drud/ddev
 elif [ -f "${binHomebrew}" ]
