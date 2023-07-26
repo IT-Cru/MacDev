@@ -3,8 +3,16 @@
 # Define directories.
 dirCommandLineTools="/Library/Developer/CommandLineTools"
 
-# Define binaries.
-binHomebrew="/usr/local/bin/brew"
+UNAME_MACHINE="$(/usr/bin/uname -m)"
+
+if [[ "${UNAME_MACHINE}" == "arm64" ]]
+then
+  # On ARM macOS, this script installs to /opt/homebrew only
+  binHomebrew="/opt/homebrew/bin/brew"
+else
+  # On Intel macOS, this script installs to /usr/local only
+  binHomebrew="/usr/local/bin/brew"
+fi
 
 # Define apps.
 app1Password="/Applications/1Password 7.app"
@@ -39,7 +47,7 @@ fi
 if [ ! -f "${binHomebrew}" ]
 then
     echo -e "Install Homebrew\n"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo -e "Add drud/ddev repository"
     ${binHomebrew} tap drud/ddev
 elif [ -f "${binHomebrew}" ]
